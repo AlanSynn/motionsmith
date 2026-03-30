@@ -76,17 +76,18 @@
     <section class="hero" aria-labelledby="project-title">
       <div class="site-shell hero__inner">
         <div class="hero__intro" data-reveal>
-          <p class="eyebrow">CHI 2026</p>
-          <h1 id="project-title">MotionSmith: A Sketch-Based Design System for Automata Making</h1>
+          <p class="eyebrow">CHI 2026 Full Paper</p>
+          <h1 id="project-title"><span class="hero__title-line"><span class="hero__title-mark">MotionSmith:</span> <span class="hero__title-rest">A Sketch-Based</span></span><span class="hero__title-line hero__title-rest">Design System</span><span class="hero__title-line hero__title-rest">for Automata Making</span></h1>
           <p class="hero__summary">Sketch motion, compare mechanisms, refine the result, and export fabrication-ready automata.</p>
-          <p class="hero__authors">DoangJoo (Alan) Synn / Zhifan Guo / Sehoon Ha / HyunJoo Oh</p>
-          <p class="hero__meta">Georgia Institute of Technology / UC Santa Barbara</p>
-          <p class="hero__meta">CHI '26, Barcelona, Spain / April 13-17, 2026</p>
+          <p class="hero__authors">DoangJoo (Alan) Synn<sup>1</sup>, Zhifan Guo<sup>2</sup>, Sehoon Ha<sup>1</sup>, HyunJoo Oh<sup>1</sup></p>
+          <p class="hero__affiliations"><span><sup>1</sup> Georgia Tech</span><span><sup>2</sup> UC Santa Barbara</span></p>
+          <p class="hero__meta">CHI 2026, Barcelona, Spain / April 13-17, 2026</p>
           <div class="link-row" aria-label="Primary links">
-            <a class="link-chip link-chip--solid" href="static/pdfs/motionsmith-chi-2026.pdf" target="_blank" rel="noreferrer">Paper PDF</a>
-            <a class="link-chip" href="https://doi.org/10.1145/3772318.3791545" target="_blank" rel="noreferrer">DOI</a>
-            <a class="link-chip" href="#demo">Demo</a>
-            <a class="link-chip" href="#bibtex-heading">BibTeX</a>
+            <a class="link-chip link-chip--solid" href="static/pdfs/motionsmith-chi-2026.pdf" target="_blank" rel="noreferrer"><span class="link-chip__icon" aria-hidden="true">📄</span>Paper PDF</a>
+            <a class="link-chip" href="https://doi.org/10.1145/3772318.3791545" target="_blank" rel="noreferrer"><span class="link-chip__icon" aria-hidden="true">🔗</span>DOI</a>
+            <a class="link-chip" href="https://github.com/AlanSynn/motionsmith-chi26" target="_blank" rel="noreferrer"><span class="link-chip__icon" aria-hidden="true"><svg viewBox="0 0 16 16" role="img" focusable="false" aria-hidden="true"><path d="M8 .2A8 8 0 0 0 5.47 15.8c.4.08.55-.17.55-.38l-.01-1.49c-2.24.49-2.71-.95-2.71-.95-.36-.93-.89-1.17-.89-1.17-.73-.5.06-.49.06-.49.8.06 1.23.82 1.23.82.72 1.21 1.87.86 2.33.65.07-.51.28-.86.5-1.06-1.79-.2-3.67-.88-3.67-3.93 0-.87.31-1.58.82-2.14-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.52 7.52 0 0 1 4 0c1.53-1.03 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.14 0 3.06-1.88 3.72-3.68 3.92.29.24.55.73.55 1.48l-.01 2.19c0 .21.14.46.55.38A8 8 0 0 0 8 .2Z"/></svg></span>Code</a>
+            <a class="link-chip" href="#demo"><span class="link-chip__icon" aria-hidden="true">▶</span>Demo</a>
+            <a class="link-chip" href="#bibtex-heading"><span class="link-chip__icon" aria-hidden="true">❝</span>BibTeX</a>
           </div>
         </div>
 
@@ -101,11 +102,12 @@
       <div class="site-shell section__grid section__grid--intro">
         <div data-reveal>
           <p class="section-kicker">Overview</p>
-          <h2 id="overview-heading">Built around creative intent rather than mechanism-first authoring.</h2>
+          <h2 id="overview-heading">Built to connect creative intent, mechanism design, and fabrication.</h2>
         </div>
         <div class="rich-copy" data-reveal>
-          <p>MotionSmith is a sketch-based computational design system for automata making. Users sketch a target motion, inspect generated mechanisms, refine the selected design, and export fabrication-ready files.</p>
-          <p>The system was developed through participatory design with experienced automata makers, so the workflow keeps artistic intent visible from the first sketch through fabrication.</p>
+          <p>We present MotionSmith, a sketch-based computational design system developed through participatory design (PD) with three experienced makers of mechanical crafts (automata). MotionSmith enables users to sketch and iteratively identify a desired motion, explore system-generated mechanisms to realize the motion, refine the chosen mechanism, and export fabrication-ready files.</p>
+          <p>We developed the system through a year-long iterative process, including PD with three artists. Insights from this collaboration emphasized the importance of supporting creative intent alongside sketch fidelity, enabling fluent iteration across design stages, and ensuring mechanically simple, fabricable outcomes.</p>
+          <p>The resulting system leverages computational support while maintaining user agency across sketching, mechanism synthesis, and blueprint generation. Our deployment with experts shows how this workflow bridges user intent and mechanical realization and surfaces opportunities to expand educational scaffolding and fabrication guidance for a broader community of makers.</p>
         </div>
       </div>
 
@@ -119,7 +121,7 @@
           <li>
             <p class="takeaway-list__index">02</p>
             <strong>Three stages keep the tool readable.</strong>
-            <span>The system moves from motion sketching to mechanism generation to export without hiding the intermediate steps.</span>
+            <span>The system moves from motion sketching to mechanism generation to export while keeping the intermediate steps visible.</span>
           </li>
           <li>
             <p class="takeaway-list__index">03</p>
@@ -163,7 +165,7 @@
           </article>
         </div>
 
-        <div class="interface-panel" data-reveal><p class="section-kicker">Interface</p><figure class="feature-figure interface-figure" data-lens-root><img src="static/images/motionsmith-interface.png" alt="MotionSmith desktop interface showing path editing, mechanism recommendations, and export tools." loading="lazy" data-lens-image><span class="interface-lens" data-lens aria-hidden="true"></span></figure><div class="interface-copy"><h3>One workspace for drawing, simulation, editing, and export.</h3><p>The application keeps authoring, mechanism comparison, parametric refinement, pacing review, and blueprint export in one place, so users do not have to switch mental models as the design becomes more concrete.</p></div></div>
+        <div class="interface-panel" data-reveal><p class="section-kicker">Interface</p><figure class="feature-figure interface-figure" data-lens-root><img src="static/images/motionsmith-interface.png" alt="MotionSmith desktop interface showing path editing, mechanism recommendations, and export tools." loading="lazy" data-lens-image><span class="interface-lens" data-lens aria-hidden="true"></span></figure><div class="interface-copy"><h3>One workspace for drawing, simulation, editing, and export.</h3><p>The application keeps authoring, mechanism comparison, parametric refinement, pacing review, and blueprint export in one place, so the workflow stays continuous as the design becomes more concrete.</p></div></div>
       </div>
     </section>
 
@@ -197,9 +199,9 @@
               <h3>Lu Lyu / Shy elephant</h3>
               <p class="case-panel__lede">The piece evolved from a simpler leg lift into a quieter flower-holding gesture with a distinct shy rhythm.</p>
               <ul class="case-facts">
-                <li><strong>Mechanism.</strong> LL chose a four-bar linkage because it produced a more readable raise-pause-settle rhythm than the closer gear fit.</li>
+                <li><strong>Mechanism.</strong> LL chose a four-bar linkage because it supported a clear raise-pause-settle rhythm within the explored mechanism set.</li>
                 <li><strong>Fabrication.</strong> MotionSmith SVG output was extruded in Fusion 360, then combined with 3D-printed linkages, cardstock layers, and brass fasteners.</li>
-                <li><strong>Why it matters.</strong> The case shows how expressive intent can outweigh literal motion matching during mechanism selection.</li>
+                <li><strong>Why it matters.</strong> The case shows how expressive intent and motion matching can be considered together during mechanism selection.</li>
               </ul>
             </div>
           </article>
@@ -213,9 +215,9 @@
               <h3>Tom Haney / Cheering man</h3>
               <p class="case-panel__lede">This deployment turned iterative arm-raising sketches into a cleaner, more humorous cheering gesture.</p>
               <ul class="case-facts">
-                <li><strong>Mechanism.</strong> TH preferred cams because they created a clearer apex accent, even though a refined four-bar tracked the sketch more closely.</li>
+                <li><strong>Mechanism.</strong> TH selected cams because they created a clear apex accent and supported the intended cheering gesture within the explored mechanism set.</li>
                 <li><strong>Fabrication.</strong> MotionSmith blueprints became asymmetric paper cams, wire linkages, and wooden followers mounted in a synchronized frame.</li>
-                <li><strong>Why it matters.</strong> The case highlights how simplicity and visual clarity can dominate over pure trajectory accuracy.</li>
+                <li><strong>Why it matters.</strong> The case highlights how simplicity, visual clarity, and trajectory accuracy can be balanced together.</li>
               </ul>
             </div>
           </article>
