@@ -1,14 +1,4 @@
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-let scrollFrame = null;
-
-function setHeaderState() {
-  const header = document.querySelector(".site-header");
-  if (!header) {
-    return;
-  }
-
-  header.classList.toggle("is-scrolled", window.scrollY > 12);
-}
 
 function revealSections() {
   const revealTargets = document.querySelectorAll("[data-reveal]");
@@ -264,25 +254,11 @@ function setupInterfaceLens() {
   root.addEventListener("pointerleave", () => root.classList.remove("is-active"));
 }
 
-function handleScroll() {
-  if (scrollFrame !== null) {
-    return;
-  }
-
-  scrollFrame = window.requestAnimationFrame(() => {
-    setHeaderState();
-    scrollFrame = null;
-  });
-}
-
 document.addEventListener("DOMContentLoaded", () => {
-  setHeaderState();
   revealSections();
   setupCopyButtons();
   setupSectionTracking();
   setupCaseCarousel();
   setupDemoVideo();
   setupInterfaceLens();
-
-  window.addEventListener("scroll", handleScroll, { passive: true });
 });
