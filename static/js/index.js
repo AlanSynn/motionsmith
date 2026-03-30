@@ -1,4 +1,5 @@
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+let scrollFrame = null;
 
 function setHeaderState() {
   const header = document.querySelector(".site-header");
@@ -6,7 +7,7 @@ function setHeaderState() {
     return;
   }
 
-  header.classList.toggle("is-scrolled", window.scrollY > 16);
+  header.classList.toggle("is-scrolled", window.scrollY > 12);
 }
 
 function revealSections() {
@@ -30,7 +31,7 @@ function revealSections() {
     },
     {
       rootMargin: "0px 0px -10% 0px",
-      threshold: 0.15
+      threshold: 0.14
     }
   );
 
@@ -45,7 +46,7 @@ function setupCopyButtons() {
       const targetId = button.getAttribute("data-copy-target");
       const target = targetId ? document.getElementById(targetId) : null;
 
-      if (!target) {
+      if (!target || !navigator.clipboard) {
         return;
       }
 
@@ -104,11 +105,22 @@ function setupSectionTracking() {
   sections.forEach((section) => observer.observe(section));
 }
 
+function handleScroll() {
+  if (scrollFrame !== null) {
+    return;
+  }
+
+  scrollFrame = window.requestAnimationFrame(() => {
+    setHeaderState();
+    scrollFrame = null;
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   setHeaderState();
   revealSections();
   setupCopyButtons();
   setupSectionTracking();
 
-  window.addEventListener("scroll", setHeaderState, { passive: true });
+  window.addEventListener("scroll", handleScroll, { passive: true });
 });
