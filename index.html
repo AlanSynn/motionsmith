@@ -31,8 +31,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="static/css/index.css">
-  <link rel="stylesheet" href="static/css/page.css">
-  <link rel="stylesheet" href="static/css/sections.css">
+  <link rel="stylesheet" href="static/css/page.css?v=20260330">
+  <link rel="stylesheet" href="static/css/sections.css?v=20260330">
   <script defer src="static/js/index.js"></script>
 
   <script type="application/ld+json">
@@ -130,7 +130,7 @@
       </div>
     </section>
 
-    <section class="section" id="demo" aria-labelledby="demo-heading"><div class="site-shell"><div class="section__center" data-reveal><p class="section-kicker">Demo</p><h2 id="demo-heading">Demo Video</h2></div><figure class="video-figure" data-reveal><button class="video-launch" type="button" data-video-launch aria-controls="demo-video" aria-label="Play demo video"><img src="static/images/motionsmith-demo-poster.png" alt="Still frame from the MotionSmith demo video."><span class="video-launch__play">Play Demo</span></button><video id="demo-video" controls playsinline preload="none" poster="static/images/motionsmith-demo-poster.png" data-src="static/videos/chi26c-sub4526-i62.mp4" hidden></video></figure></div></section>
+    <section class="section" id="demo" aria-label="Demo Video"><div class="site-shell"><div class="section__center" data-reveal><p class="section-kicker">Demo</p></div><figure class="video-figure" data-reveal><button class="video-launch" type="button" data-video-launch aria-controls="demo-video" aria-label="Play demo video"><img src="static/images/motionsmith-demo-poster.png" alt="Still frame from the MotionSmith demo video."><span class="video-launch__play">Play Demo</span></button><video id="demo-video" controls playsinline preload="none" poster="static/images/motionsmith-demo-poster.png" data-src="static/videos/chi26c-sub4526-i62.mp4" hidden></video></figure></div></section>
 
     <section class="section" id="system" aria-labelledby="system-heading">
       <div class="site-shell">
@@ -163,16 +163,7 @@
           </article>
         </div>
 
-        <div class="interface-split" data-reveal>
-          <figure class="feature-figure feature-figure--compact">
-            <img src="static/images/motionsmith-interface.png" alt="MotionSmith desktop interface showing path editing, mechanism recommendations, and export tools." loading="lazy">
-          </figure>
-          <div class="interface-copy">
-            <p class="section-kicker">Interface</p>
-            <h3>One workspace for drawing, simulation, editing, and export.</h3>
-            <p>The application keeps authoring, mechanism comparison, parametric refinement, pacing review, and blueprint export in one place, so users do not have to switch mental models as the design becomes more concrete.</p>
-          </div>
-        </div>
+        <div class="interface-panel" data-reveal><p class="section-kicker">Interface</p><figure class="feature-figure interface-figure" data-lens-root><img src="static/images/motionsmith-interface.png" alt="MotionSmith desktop interface showing path editing, mechanism recommendations, and export tools." loading="lazy" data-lens-image><span class="interface-lens" data-lens aria-hidden="true"></span></figure><div class="interface-copy"><h3>One workspace for drawing, simulation, editing, and export.</h3><p>The application keeps authoring, mechanism comparison, parametric refinement, pacing review, and blueprint export in one place, so users do not have to switch mental models as the design becomes more concrete.</p></div></div>
       </div>
     </section>
 

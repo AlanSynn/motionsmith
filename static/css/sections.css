@@ -47,8 +47,8 @@
 
 .case-panel {
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
-  gap: 2rem;
+  grid-template-columns: minmax(0, 1.28fr) minmax(20rem, 0.72fr);
+  gap: 2.4rem;
   align-items: start;
   margin-top: 1.75rem;
 }
@@ -59,11 +59,17 @@
 
 .case-panel__figure {
   margin: 0;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--bg-soft);
 }
 
 .case-panel__figure img {
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
 .case-panel__figure figcaption {

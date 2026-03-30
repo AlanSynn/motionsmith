@@ -238,6 +238,32 @@ function setupDemoVideo() {
   });
 }
 
+function setupInterfaceLens() {
+  const root = document.querySelector("[data-lens-root]"), image = root?.querySelector("[data-lens-image]"), lens = root?.querySelector("[data-lens]");
+  if (!root || !image || !lens || !window.matchMedia("(hover: hover)").matches) {
+    return;
+  }
+
+  const zoom = 2.35, radius = 88;
+  const paintLens = (event) => {
+    const bounds = image.getBoundingClientRect();
+    const x = Math.min(bounds.width - radius, Math.max(radius, event.clientX - bounds.left));
+    const y = Math.min(bounds.height - radius, Math.max(radius, event.clientY - bounds.top));
+    lens.style.left = `${x}px`;
+    lens.style.top = `${y}px`;
+    lens.style.backgroundImage = `url("${image.currentSrc || image.src}")`;
+    lens.style.backgroundSize = `${bounds.width * zoom}px ${bounds.height * zoom}px`;
+    lens.style.backgroundPosition = `${radius - x * zoom}px ${radius - y * zoom}px`;
+  };
+
+  root.addEventListener("pointerenter", (event) => {
+    root.classList.add("is-active");
+    paintLens(event);
+  });
+  root.addEventListener("pointermove", paintLens);
+  root.addEventListener("pointerleave", () => root.classList.remove("is-active"));
+}
+
 function handleScroll() {
   if (scrollFrame !== null) {
     return;
@@ -256,6 +282,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupSectionTracking();
   setupCaseCarousel();
   setupDemoVideo();
+  setupInterfaceLens();
 
   window.addEventListener("scroll", handleScroll, { passive: true });
 });
