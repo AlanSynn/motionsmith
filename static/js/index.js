@@ -244,7 +244,7 @@ function setupInterfaceLens() {
     return;
   }
 
-  const zoom = 2.35, radius = 88;
+  const zoom = 1.85, radius = 108;
   const paintLens = (event) => {
     const bounds = image.getBoundingClientRect();
     const x = Math.min(bounds.width - radius, Math.max(radius, event.clientX - bounds.left));
