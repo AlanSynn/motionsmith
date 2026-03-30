@@ -63,6 +63,10 @@ iframe {
   border: 0;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 p,
 h1,
 h2,
@@ -116,6 +120,20 @@ p {
 .site-shell {
   width: var(--shell);
   margin: 0 auto;
+}
+
+.site-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.site-mark::before {
+  content: "";
+  width: 1.45rem;
+  height: 1.45rem;
+  background: url("../images/motionsmith-mark.svg") center / contain no-repeat;
+  flex: none;
 }
 
 .skip-link {
@@ -216,6 +234,59 @@ code {
   color: var(--text);
   font-family: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", monospace;
   font-size: 0.91rem;
+}
+
+.video-figure {
+  max-width: 64rem;
+  margin: 0 auto;
+}
+.video-launch {
+  position: relative;
+  width: 100%;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: #05070f;
+  cursor: pointer;
+  overflow: hidden;
+}
+.video-launch img,
+.video-figure video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: #05070f;
+}
+.video-figure video {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+}
+.video-launch::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(8, 10, 18, 0.08), rgba(8, 10, 18, 0.28));
+}
+.video-launch__play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 3.25rem;
+  padding: 0.85rem 1.25rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--text);
+  font-weight: 800;
+  transform: translate(-50%, -50%);
+}
+.video-launch__play::before {
+  content: "▶";
+  font-size: 0.82rem;
 }
 
 @media (max-width: 700px) {

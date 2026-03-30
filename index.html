@@ -9,18 +9,15 @@
   <meta name="author" content="DoangJoo (Alan) Synn, Zhifan Guo, Sehoon Ha, HyunJoo Oh">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#ffffff">
-
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="MotionSmith">
   <meta property="og:title" content="MotionSmith: A Sketch-Based Design System for Automata Making">
   <meta property="og:description" content="A CHI 2026 paper on sketch-based computational design for automata making.">
   <meta property="og:image" content="static/images/motionsmith-teaser.png">
-
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="MotionSmith: A Sketch-Based Design System for Automata Making">
   <meta name="twitter:description" content="A CHI 2026 paper on sketch-based computational design for automata making.">
   <meta name="twitter:image" content="static/images/motionsmith-teaser.png">
-
   <meta name="citation_title" content="MotionSmith: A Sketch-Based Design System for Automata Making">
   <meta name="citation_author" content="Synn, DoangJoo (Alan)">
   <meta name="citation_author" content="Guo, Zhifan">
@@ -29,7 +26,6 @@
   <meta name="citation_publication_date" content="2026">
   <meta name="citation_conference_title" content="Proceedings of the 2026 CHI Conference on Human Factors in Computing Systems">
   <meta name="citation_pdf_url" content="static/pdfs/motionsmith-chi-2026.pdf">
-
   <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -63,12 +59,12 @@
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
-
   <header class="site-header" id="top">
     <div class="site-shell site-header__inner">
       <a class="site-mark" href="#top">MotionSmith</a>
       <nav class="site-nav" aria-label="Section navigation">
         <a href="#overview" data-nav-link>Overview</a>
+        <a href="#demo" data-nav-link>Demo</a>
         <a href="#system" data-nav-link>System</a>
         <a href="#cases" data-nav-link>Cases</a>
         <a href="#citation" data-nav-link>Citation</a>
@@ -89,7 +85,7 @@
           <div class="link-row" aria-label="Primary links">
             <a class="link-chip link-chip--solid" href="static/pdfs/motionsmith-chi-2026.pdf" target="_blank" rel="noreferrer">Paper PDF</a>
             <a class="link-chip" href="https://doi.org/10.1145/3772318.3791545" target="_blank" rel="noreferrer">DOI</a>
-            <a class="link-chip" href="#system">System</a>
+            <a class="link-chip" href="#demo">Demo</a>
             <a class="link-chip" href="#bibtex-heading">BibTeX</a>
           </div>
         </div>
@@ -133,6 +129,8 @@
         </ol>
       </div>
     </section>
+
+    <section class="section" id="demo" aria-labelledby="demo-heading"><div class="site-shell"><div class="section__center" data-reveal><p class="section-kicker">Demo</p><h2 id="demo-heading">Demo Video</h2></div><figure class="video-figure" data-reveal><button class="video-launch" type="button" data-video-launch aria-controls="demo-video" aria-label="Play demo video"><img src="static/images/motionsmith-demo-poster.png" alt="Still frame from the MotionSmith demo video."><span class="video-launch__play">Play Demo</span></button><video id="demo-video" controls playsinline preload="none" poster="static/images/motionsmith-demo-poster.png" data-src="static/videos/chi26c-sub4526-i62.mp4" hidden></video></figure></div></section>
 
     <section class="section" id="system" aria-labelledby="system-heading">
       <div class="site-shell">
@@ -183,31 +181,71 @@
         <div class="section__center" data-reveal>
           <p class="section-kicker">Cases</p>
           <h2 id="cases-heading">Three artist-led deployments show how the system holds up in practice.</h2>
-          <p>Each case moved from digital sketching to a fabricated automaton with a different expressive goal and mechanism choice.</p>
+          <p>Each deployment spans the full handoff from MotionSmith authoring, to mechanism choice, to fabrication and the finished automaton.</p>
         </div>
 
-        <div class="case-grid">
-          <figure class="case" data-reveal>
-            <img src="static/images/motionsmith-case-lu.png" alt="Lu Lyu's shy elephant automaton designed with MotionSmith." loading="lazy">
-            <figcaption>
-              <strong>Lu Lyu / Shy elephant</strong>
-              <span>Four-bar linkages and hybrid papercraft plus 3D-printed parts support a quiet flower-holding gesture.</span>
-            </figcaption>
-          </figure>
-          <figure class="case" data-reveal>
-            <img src="static/images/motionsmith-case-tom.png" alt="Tom Haney's cheering man automaton designed with MotionSmith." loading="lazy">
-            <figcaption>
-              <strong>Tom Haney / Cheering man</strong>
-              <span>Cam-driven arms emphasize a sharp upward motion tuned for humor, rhythm, and mechanical clarity.</span>
-            </figcaption>
-          </figure>
-          <figure class="case" data-reveal>
-            <img src="static/images/motionsmith-case-marc.png" alt="Marc Horovitz's tin robot automaton designed with MotionSmith." loading="lazy">
-            <figcaption>
-              <strong>Marc Horovitz / Tin robot</strong>
-              <span>A compound cam design coordinates arm and leg accents while keeping the final build straightforward to assemble.</span>
-            </figcaption>
-          </figure>
+        <div class="case-carousel" data-case-carousel data-reveal>
+          <div class="case-tabs" role="tablist" aria-label="Deployment cases">
+            <button class="case-tab is-active" type="button" id="case-tab-lu" role="tab" aria-selected="true" aria-controls="case-lu" data-case-trigger>
+              <span class="case-tab__index">01</span><span class="case-tab__text"><strong>Lu Lyu</strong><span>Shy elephant / Four-bar</span></span>
+            </button>
+            <button class="case-tab" type="button" id="case-tab-tom" role="tab" aria-selected="false" aria-controls="case-tom" data-case-trigger>
+              <span class="case-tab__index">02</span><span class="case-tab__text"><strong>Tom Haney</strong><span>Cheering man / Cams</span></span>
+            </button>
+            <button class="case-tab" type="button" id="case-tab-marc" role="tab" aria-selected="false" aria-controls="case-marc" data-case-trigger>
+              <span class="case-tab__index">03</span><span class="case-tab__text"><strong>Marc Horovitz</strong><span>Tin robot / Compound cam</span></span>
+            </button>
+          </div>
+
+          <article class="case-panel is-active" id="case-lu" role="tabpanel" aria-labelledby="case-tab-lu" data-case-panel>
+            <figure class="case-panel__figure">
+              <img src="static/images/motionsmith-case-lu.png" alt="Lu Lyu's shy elephant process from MotionSmith authoring to fabrication and final automaton." loading="lazy"><figcaption>A-F shows authoring, four-bar refinement, printed parts, assembly, frame mounting, and the finished shy elephant.</figcaption>
+            </figure>
+            <div class="case-panel__copy">
+              <p class="section-kicker">Case 01</p>
+              <h3>Lu Lyu / Shy elephant</h3>
+              <p class="case-panel__lede">The piece evolved from a simpler leg lift into a quieter flower-holding gesture with a distinct shy rhythm.</p>
+              <ul class="case-facts">
+                <li><strong>Mechanism.</strong> LL chose a four-bar linkage because it produced a more readable raise-pause-settle rhythm than the closer gear fit.</li>
+                <li><strong>Fabrication.</strong> MotionSmith SVG output was extruded in Fusion 360, then combined with 3D-printed linkages, cardstock layers, and brass fasteners.</li>
+                <li><strong>Why it matters.</strong> The case shows how expressive intent can outweigh literal motion matching during mechanism selection.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="case-panel" id="case-tom" role="tabpanel" aria-labelledby="case-tab-tom" data-case-panel hidden>
+            <figure class="case-panel__figure">
+              <img src="static/images/motionsmith-case-tom.png" alt="Tom Haney's cheering man process from MotionSmith authoring to fabrication and final automaton." loading="lazy"><figcaption>A-F shows authoring, cam selection, paper templates, wire linkages, frame assembly, and the finished cheering motion.</figcaption>
+            </figure>
+            <div class="case-panel__copy">
+              <p class="section-kicker">Case 02</p>
+              <h3>Tom Haney / Cheering man</h3>
+              <p class="case-panel__lede">This deployment turned iterative arm-raising sketches into a cleaner, more humorous cheering gesture.</p>
+              <ul class="case-facts">
+                <li><strong>Mechanism.</strong> TH preferred cams because they created a clearer apex accent, even though a refined four-bar tracked the sketch more closely.</li>
+                <li><strong>Fabrication.</strong> MotionSmith blueprints became asymmetric paper cams, wire linkages, and wooden followers mounted in a synchronized frame.</li>
+                <li><strong>Why it matters.</strong> The case highlights how simplicity and visual clarity can dominate over pure trajectory accuracy.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="case-panel" id="case-marc" role="tabpanel" aria-labelledby="case-tab-marc" data-case-panel hidden>
+            <figure class="case-panel__figure">
+              <img src="static/images/motionsmith-case-marc.png" alt="Marc Horovitz's tin robot process from MotionSmith authoring to fabrication and final automaton." loading="lazy"><figcaption>A-F shows authoring, cam generation, paper templates, limb preparation, backing-board assembly, and the final angel-like pose.</figcaption>
+            </figure>
+            <div class="case-panel__copy">
+              <p class="section-kicker">Case 03</p>
+              <h3>Marc Horovitz / Tin robot</h3>
+              <p class="case-panel__lede">The robot expanded from arm motion to a fuller angel-like gesture with coordinated arm and leg accents.</p>
+              <ul class="case-facts">
+                <li><strong>Mechanism.</strong> MH composed a compound cam using larger arm cams and smaller leg cams to balance presence, comprehensibility, and fabrication effort.</li>
+                <li><strong>Fabrication.</strong> Printed blueprint packets were used as cutting guides for paper and wood parts before assembly on a backing board.</li>
+                <li><strong>Why it matters.</strong> The case shows how MotionSmith can hand off most of the process even when multi-motion synthesis still needs manual completion.</li>
+              </ul>
+            </div>
+          </article>
+
+          <div class="case-carousel__footer"><p class="case-carousel__status" data-case-status aria-live="polite">1 / 3</p><div class="case-carousel__controls"><button class="case-arrow" type="button" data-case-prev>Previous</button><button class="case-arrow" type="button" data-case-next>Next</button></div></div>
         </div>
       </div>
     </section>
@@ -219,18 +257,9 @@
           <h2 id="citation-heading">Read the paper and cite MotionSmith.</h2>
           <p class="citation-copy">The full paper is available as a local PDF. The DOI and BibTeX are included below for quick reference.</p>
           <div class="resource-list">
-            <a class="resource-link" href="static/pdfs/motionsmith-chi-2026.pdf" target="_blank" rel="noreferrer">
-              <span class="resource-link__title">Paper PDF</span>
-              <span class="resource-link__meta">Open the full CHI 2026 paper.</span>
-            </a>
-            <a class="resource-link" href="https://doi.org/10.1145/3772318.3791545" target="_blank" rel="noreferrer">
-              <span class="resource-link__title">DOI</span>
-              <span class="resource-link__meta">Open the ACM Digital Library record.</span>
-            </a>
-            <a class="resource-link" href="#bibtex-heading">
-              <span class="resource-link__title">BibTeX</span>
-              <span class="resource-link__meta">Jump to the citation block.</span>
-            </a>
+            <a class="resource-link" href="static/pdfs/motionsmith-chi-2026.pdf" target="_blank" rel="noreferrer"><span class="resource-link__title">Paper PDF</span><span class="resource-link__meta">Open the full CHI 2026 paper.</span></a>
+            <a class="resource-link" href="https://doi.org/10.1145/3772318.3791545" target="_blank" rel="noreferrer"><span class="resource-link__title">DOI</span><span class="resource-link__meta">Open the ACM Digital Library record.</span></a>
+            <a class="resource-link" href="#bibtex-heading"><span class="resource-link__title">BibTeX</span><span class="resource-link__meta">Jump to the citation block.</span></a>
           </div>
         </div>
 

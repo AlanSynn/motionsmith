@@ -105,6 +105,139 @@ function setupSectionTracking() {
   sections.forEach((section) => observer.observe(section));
 }
 
+function setupCaseCarousel() {
+  const carousel = document.querySelector("[data-case-carousel]");
+  if (!carousel) {
+    return;
+  }
+
+  const triggers = Array.from(carousel.querySelectorAll("[data-case-trigger]"));
+  const panels = Array.from(carousel.querySelectorAll("[data-case-panel]"));
+  const status = carousel.querySelector("[data-case-status]");
+  const previousButton = carousel.querySelector("[data-case-prev]");
+  const nextButton = carousel.querySelector("[data-case-next]");
+
+  if (!triggers.length || triggers.length !== panels.length) {
+    return;
+  }
+
+  let activeIndex = 0;
+
+  function activateCase(nextIndex) {
+    activeIndex = (nextIndex + panels.length) % panels.length;
+
+    triggers.forEach((trigger, index) => {
+      const isActive = index === activeIndex;
+      trigger.classList.toggle("is-active", isActive);
+      trigger.setAttribute("aria-selected", isActive ? "true" : "false");
+      trigger.tabIndex = isActive ? 0 : -1;
+
+      if (isActive) {
+        trigger.scrollIntoView({
+          behavior: prefersReducedMotion.matches ? "auto" : "smooth",
+          block: "nearest",
+          inline: "center"
+        });
+      }
+    });
+
+    panels.forEach((panel, index) => {
+      const isActive = index === activeIndex;
+      panel.hidden = !isActive;
+      panel.classList.toggle("is-active", isActive);
+      if (isActive) {
+        panel.style.removeProperty("display");
+      } else {
+        panel.style.display = "none";
+      }
+    });
+
+    if (status) {
+      status.textContent = `${activeIndex + 1} / ${panels.length}`;
+    }
+  }
+
+  triggers.forEach((trigger, index) => {
+    trigger.addEventListener("click", () => activateCase(index));
+    trigger.addEventListener("keydown", (event) => {
+      if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") {
+        return;
+      }
+
+      event.preventDefault();
+      const direction = event.key === "ArrowRight" ? 1 : -1;
+      const nextIndex = (index + direction + triggers.length) % triggers.length;
+      activateCase(nextIndex);
+      triggers[nextIndex].focus();
+    });
+  });
+
+  previousButton?.addEventListener("click", () => activateCase(activeIndex - 1));
+  nextButton?.addEventListener("click", () => activateCase(activeIndex + 1));
+  activateCase(activeIndex);
+}
+
+function setupDemoVideo() {
+  const video = document.getElementById("demo-video");
+  const launch = document.querySelector("[data-video-launch]");
+  const videoSource = video?.dataset.src;
+  if (!video || !launch || !videoSource) {
+    return;
+  }
+
+  function buildFreshSource() {
+    const separator = videoSource.includes("?") ? "&" : "?";
+    return `${videoSource}${separator}play=${Date.now()}`;
+  }
+
+  async function prepareVideoStart() {
+    video.src = buildFreshSource();
+    video.load();
+
+    if (video.readyState < 1) {
+      await new Promise((resolve) => {
+        video.addEventListener("loadedmetadata", resolve, { once: true });
+      });
+    }
+
+    try {
+      video.currentTime = 0;
+    } catch (error) {
+      return;
+    }
+
+    if (video.seeking) {
+      await new Promise((resolve) => {
+        video.addEventListener("seeked", resolve, { once: true });
+      });
+    }
+  }
+
+  function resetVideo() {
+    launch.hidden = false;
+    video.pause();
+    video.hidden = true;
+    video.preload = "none";
+    video.removeAttribute("src");
+    video.load();
+  }
+
+  resetVideo();
+  window.addEventListener("pageshow", resetVideo);
+
+  launch.addEventListener("click", async () => {
+    launch.hidden = true;
+    video.hidden = false;
+    await prepareVideoStart();
+
+    try {
+      await video.play();
+    } catch (error) {
+      video.pause();
+    }
+  });
+}
+
 function handleScroll() {
   if (scrollFrame !== null) {
     return;
@@ -121,6 +254,8 @@ document.addEventListener("DOMContentLoaded", () => {
   revealSections();
   setupCopyButtons();
   setupSectionTracking();
+  setupCaseCarousel();
+  setupDemoVideo();
 
   window.addEventListener("scroll", handleScroll, { passive: true });
 });
