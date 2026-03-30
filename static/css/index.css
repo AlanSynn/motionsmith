@@ -292,7 +292,35 @@ code {
 }
 
 @media (max-width: 700px) {
-  .link-row {
-    justify-content: start;
+  .hero__intro .link-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    justify-content: stretch;
+    gap: 0.85rem;
+  }
+
+  .hero__intro .link-chip {
+    width: 100%;
+    min-width: 0;
+    justify-content: space-between;
+    padding: 0.88rem 1rem;
+  }
+
+  .hero__intro .link-chip::after {
+    margin-left: auto;
+  }
+
+  .hero__intro .link-chip--solid {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 420px) {
+  .hero__intro .link-row {
+    grid-template-columns: 1fr;
+  }
+
+  .hero__intro .link-chip--solid {
+    grid-column: auto;
   }
 }
