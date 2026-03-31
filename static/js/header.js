@@ -1,6 +1,6 @@
 (() => {
   const MOBILE_NAV_QUERY = "(max-width: 860px)";
-  const HIDE_OFFSET = 140;
+  const TOP_REVEAL_OFFSET = 24;
   const HIDE_DELTA = 8;
 
   document.addEventListener("DOMContentLoaded", () => {
@@ -19,23 +19,18 @@
     const syncHeader = (forceReveal = false) => {
       const currentScrollY = window.scrollY;
       const delta = currentScrollY - lastScrollY;
+      const hideOffset = header.offsetHeight + TOP_REVEAL_OFFSET;
 
       header.classList.toggle("is-scrolled", currentScrollY > 12);
 
-      if (!mobileQuery.matches) {
-        header.classList.remove("is-hidden");
-        lastScrollY = currentScrollY;
-        return;
-      }
-
-      if (forceReveal || header.classList.contains("is-menu-open") || currentScrollY < 24) {
+      if (forceReveal || header.classList.contains("is-menu-open") || currentScrollY < TOP_REVEAL_OFFSET) {
         header.classList.remove("is-hidden");
         lastScrollY = currentScrollY;
         return;
       }
 
       if (Math.abs(delta) >= HIDE_DELTA) {
-        if (delta > 0 && currentScrollY > HIDE_OFFSET) {
+        if (delta > 0 && currentScrollY > hideOffset) {
           header.classList.add("is-hidden");
         } else if (delta < 0) {
           header.classList.remove("is-hidden");

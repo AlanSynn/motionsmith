@@ -113,7 +113,8 @@ function setupCaseCarousel() {
 
   let activeIndex = 0;
 
-  function activateCase(nextIndex) {
+  function activateCase(nextIndex, options = {}) {
+    const { scrollTriggerIntoView = true } = options;
     activeIndex = (nextIndex + panels.length) % panels.length;
 
     triggers.forEach((trigger, index) => {
@@ -122,7 +123,7 @@ function setupCaseCarousel() {
       trigger.setAttribute("aria-selected", isActive ? "true" : "false");
       trigger.tabIndex = isActive ? 0 : -1;
 
-      if (isActive) {
+      if (isActive && scrollTriggerIntoView) {
         trigger.scrollIntoView({
           behavior: prefersReducedMotion.matches ? "auto" : "smooth",
           block: "nearest",
@@ -164,7 +165,7 @@ function setupCaseCarousel() {
 
   previousButton?.addEventListener("click", () => activateCase(activeIndex - 1));
   nextButton?.addEventListener("click", () => activateCase(activeIndex + 1));
-  activateCase(activeIndex);
+  activateCase(activeIndex, { scrollTriggerIntoView: false });
 }
 
 function setupDemoVideo() {
