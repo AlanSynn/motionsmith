@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>MotionSmith</title>
+        <item>
+            <title>0.1.4</title>
+            <pubDate>Sat, 20 Jun 2026 22:16:59 +0000</pubDate>
+            <link>https://alansynn.com/motionsmith/</link>
+            <sparkle:version>0.1.4</sparkle:version>
+            <sparkle:shortVersionString>0.1.4</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>10.13</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <enclosure url="https://github.com/AlanSynn/automataii/releases/download/v0.1.4/MotionSmith-macos-arm64.dmg" length="147514800" type="application/octet-stream" sparkle:edSignature="zkmbWfIL6qyVyP41RzePgW+4eFn2gJn/TYay864+n6Qo1P8/Spw9UkNCuQ/1VBxVmutOjIY10drAqXr3nymuCw==" />
+        </item>
+    </channel>
+</rss>
